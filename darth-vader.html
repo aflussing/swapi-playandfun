@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Star Wars API test to play and fun</title>
+</head>
+<body>
+
+
+    <h1 id="name"></h1>
+    <h2>Height: <i id="height"></i></h2>
+    <h2>Hair Color: <i id="hair_color"></i></h2>
+    <h2>Eye Color:  <i id="eye_color"></i></h2>
+    <h2>Birth Year: <i id="birth_year"></i></h2>
+
+
+    <script>
+        console.log("hello");
+        function httpGet(theUrl) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+            xmlHttp.send( null );
+            return xmlHttp.response;
+        }
+        var result = JSON.parse(httpGet("https://swapi.co/api/people/4")); 
+
+        var person = {
+            name : result.name,
+            height : result.height,
+            hair_color : result.hair_color,
+            eye_color : result.eye_color,
+            birth_year : result.birth_year
+        };
+        document.getElementById("name").append(person.name);
+        document.getElementById("height").append(person.height);
+        document.getElementById("hair_color").append(person.hair_color);
+        document.getElementById("eye_color").append(person.eye_color);
+        document.getElementById("birth_year").append(person.birth_year);
+
+    </script>
+
+</body>
+</html>
